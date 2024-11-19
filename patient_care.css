@@ -1,0 +1,20 @@
+.video-gallery{
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto multiple rows */
+    gap: 5px;
+    height: 100%;
+    padding-top: 15px;
+}
+
+.video-container{
+    flex: 1 1 calc(33.33% - 20px); /* Each item takes up one-third of the row, minus gap space */
+    /* box-sizing: border-box; Ensures padding and border are included in the width */
+    padding: 5px; /* Optional: adds padding inside each item */
+    /* background-color: #f0f0f0; Optional: background color for visibility */
+    text-align: center;
+
+}
+
+.mynav, .mynav a{
+    font-size: 18px;
+}

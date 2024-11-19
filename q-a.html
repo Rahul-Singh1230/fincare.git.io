@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        #search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .qa-item {
+            margin-bottom: 10px;
+        }
+        
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a0dab;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+        
+        .question:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .answer {
+            font-size: 16px;
+            color: #555;
+            padding: 10px;
+            display: none; /* Initially hidden */
+            border-left: 2px solid #1a0dab;
+            margin-left: 20px;
+        }
+        
+    </style>
+    <!-- css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/ionicons.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/owl.carousel.css">
+		<link rel="stylesheet" href="css/owl.theme.css">
+		<link rel="stylesheet" href="css/owl.transitions.css">
+	    <link rel="stylesheet" href="css/animate.css">
+	    <link rel="stylesheet" href="css/custom.css">
+        <link rel="stylesheet" href="./patient_care.css">
+        <link rel="stylesheet" href="./articles.css">
+
+        <!-- js -->
+	    <script src="js/jquery.min.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+	    <script src="js/owl.carousel.min.js"></script>
+	    <script src="js/isotope.pkgd.min.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/jquery.actual.min.js"></script>
+</head>
+<body>
+    <section style="box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1)">
+        <nav class="mynav">
+            <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="ion-navicon"></span>
+                  </button>
+                  <a style="font-size: 25px;" class="navbar-brand" href="./index.html">Fincare</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./patient_care.html">Blogs</a></li>
+                    <li><a href="./articles.html">Articles</a></li>
+                  <li><a href="./q-a.html">Q & A</a></li>
+                </ul>
+            </div>	<!-- collapse navbar-collapse -->
+          </div>	<!-- container-fluid -->
+    </nav>  
+    </section> 
+
+<div class="container">
+    <header>
+        <h1>Q&A Page</h1>
+        <input type="text" id="search-bar" placeholder="Search questions..." onkeyup="filterQuestions()">
+    </header>
+
+    <section id="qa-list">
+        <div class="qa-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                How can I book an appointment through FinCare?
+            </div>
+            <div class="answer">
+                Simply search for nearby clinics or doctors, choose the one that meets your needs, and select an available time slot to book your appointment online. You’ll receive a confirmation once the booking is complete.
+
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                Can I view the estimated cost of treatments before booking?
+
+            </div>
+            <div class="answer">
+                Yes, FinCare provides cost estimates for common treatments and consultations, helping you plan financially before booking an appointment.
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                How does FinCare recommend doctors or clinics?
+
+            </div>
+            <div class="answer">
+                FinCare recommends healthcare providers based on factors like patient reviews, experience, location, and specialization to help you make informed choices.
+
+            </div>
+        </div>
+        <div class="qa-item">
+            <div class="question" onclick="toggleAnswer(this)">
+                Is my personal and medical information safe on FinCare?
+
+
+            </div>
+            <div class="answer">
+                Absolutely. FinCare uses secure systems to protect patient data and ensure that your personal information remains private.
+
+
+            </div>
+        </div>
+        
+        <!-- Add more Q&A items as needed -->
+    </section>
+</div>
+
+<script>
+    function toggleAnswer(element) {
+        const answer = element.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+    }
+    
+    function filterQuestions() {
+        const query = document.getElementById("search-bar").value.toLowerCase();
+        const qaItems = document.querySelectorAll(".qa-item");
+    
+        qaItems.forEach(item => {
+            const question = item.querySelector(".question").textContent.toLowerCase();
+            const answer = item.querySelector(".answer").textContent.toLowerCase();
+    
+            if (question.includes(query) || answer.includes(query)) {
+                item.style.display = "";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+    
+</script>
+</body>
+</html>

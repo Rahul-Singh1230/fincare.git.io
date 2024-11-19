@@ -1,0 +1,27 @@
+.h1{
+    color:#2e61ea;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size: 50px;
+}
+
+.select{
+    color:#2e61ea;
+    font-size: 18px;
+    border:2px solid #2e61ea;
+    border-radius: 5px;
+    margin:5px;
+}
+
+.table{
+    border: 2px solid #7B68EE ;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tr{
+    color: blue;
+    font-size: 20px;
+    background: #cad7f9;
+}

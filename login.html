@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container_1">
+        <div class="heading">
+            <p>Hospital Managment</p>
+            <pre>Smart   Data,   Clear   Insights,   Better   Care</pre>
+        </div>
+    </div>
+
+    <div class="form">
+        <form class="login" onsubmit="return validateLogin()">
+            <h3 align="center" class="title">Hospital Login</h3>
+            <label for="name" class="name">Username</label><br>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+            <label for="password" class="password">Password</label><br>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <button type="submit" ><a href="./hospital_managment.html" class="btn">Sign in</a></button>
+        </form>
+        <p id="error" style="color:red;"></p>
+    </div>
+</body>
+</html>

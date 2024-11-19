@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    /* Basic styling for the sign-in page */
+    @import url(omnes-pro.css);
+    @import url(http://fonts.googleapis.com/css?family=Coda);
+    @import url(http://fonts.googleapis.com/css?family=Roboto);
+    @import url(http://fonts.googleapis.com/css?family=Raleway);
+    @import url(http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600);
+    body {
+      font-family: Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f3f3f3;
+    }
+
+    .signin-container {
+      width: 300px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: lightseagreen;
+      color: white;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: lightseagreen;
+    }
+
+    .forgot-password {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .forgot-password a {
+      color: lightseagreen;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signin-container">
+    <h2>Hospital Log In</h2>
+    <form action="" method="post">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button><a href="./hospital_managment.html">Log In</a></button>
+      <p class="forgot-password"><a href="#">Forgot your password?</a></p>
+    </form>
+  </div>
+
+</body>
+</html>

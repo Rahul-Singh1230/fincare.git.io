@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-bg-hospital:#e8f8f5;
+    --color-bg-variant-hospital:#58d68d;
+    --color-bg-petient:#cad7f9;
+    --color-bg-variant-petient:#2e61ea;
+    --color-primary: #7B68EE ;
+    --color-primary-variant : #5b4dbb;
+    --color-white: #fff;
+    --color-light:#a4b3b6;
+  
+    --transition : all 400ms ease;
+  }
+
+
+  *{
+      margin:0;
+      padding:0;
+      background-color:var(--color-bg-hospital);
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: <weight>;
+      font-style: normal;
+  }
+  
+  .container{
+      display:flex;
+      background-color:var(--color-bg-hospital);
+  }
+  
+  
+  .img{
+      flex:6;
+      background: var(--color-bg-hospital);
+  }
+  .intro{
+      width:96%;
+      height:96%;
+  }
+  
+  .info{
+      flex:4;
+      text-align: justify;
+      background: var(--color-bg-hospital);
+      padding-top: 20px;
+  }
+  
+  .h5{
+    display:flex;
+    text-align:center;
+  }
+
+  .info h5{
+      color: #0211bd; 
+      font-size:50px;
+  } 
+  
+  .info p{
+    font-size: 20px;
+    padding-top: 60px;
+    padding-right:20px;
+  }
+  
+  .logo{
+      width:10%;
+      height:10%;
+  }
+
+  .container_1{
+    padding: 20px;
+    margin:0;
+  }
+  
+  .heading{
+      display:flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:center;
+      padding-bottom:18px;
+  }
+  
+  .heading p{
+      font-size: 100px;
+      padding-top: 100px;
+      font-weight:700;
+      color:#0d1789;
+  }
+  
+  .heading pre{
+      font-size:30px;
+      color:#095e95;
+  
+  }
+  
+  .options{
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      padding-bottom:35vh;
+      margin:10px;
+  }
+  
+  button{
+      border:transparent;
+      
+  }
+  
+
+  button a{
+    text-decoration: none;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3)
+  }
+
+  .login{
+    display:flex;
+    flex-direction: column;
+    align-iteam:center;
+    justify-content:center;
+    padding:0% 30%;
+    margin: 0;
+  }
+
+  .title{
+    font-size: 35px;
+    color: #0211bd;
+    color: #0211bd;
+  }
+
+  .name , .password{
+    font-size: 20px;
+    color: #0211bd;
+  }
+
+  #name{
+    border: black 2px solid;
+    border-radius: 5px;
+  }
+
+  #password{
+    border: black 2px solid;
+    border-radius: 5px;
+  }
+
+  .btn{
+    border:transparent 2px solid;
+    border-radius: 10px;
+    padding: 10px 40px;
+    color:  #0211bd;
+    font-size: 26px;
+    background: #61abf1;
+  }
+
+  .btn:hover{
+    font-size: 27px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  }

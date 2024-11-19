@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors Specialization</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Function to fetch and display filtered data based on specialization
+    function fetchDoctors(specialization) {
+      fetch(`/specialization/${specialization}`)
+        .then(response => response.json())
+        .then(data => {
+          const tableBody = document.getElementById('table-body');
+          tableBody.innerHTML = '';  // Clear previous data
+
+          data.forEach(doctor => {
+            const row = `<tr>
+                          <td class="border px-4 py-2">${doctor.Name}</td>
+                          <td class="border px-4 py-2">${doctor['Consultation Fees(in Rs)']}</td>
+                          <td class="border px-4 py-2">${doctor['Years of Experience']}</td>
+                          <td class="border px-4 py-2">${doctor['Hospital(in Ahmedabad)']}</td>
+                          <td class="border px-4 py-2">
+                            <a href="${doctor['Location']}" target="_blank" class="text-blue-500 hover:underline">Google Maps</a>
+                          </td>
+                        </tr>`;
+            tableBody.innerHTML += row;
+          });
+        });
+    }
+  </script>
+</head>
+<body class="bg-gray-100 p-8">
+
+  <h1 class="text-4xl font-bold text-center mb-8">Doctors by Specialization</h1>
+
+  <!-- Buttons for filtering by specialization -->
+  <div class="flex justify-center space-x-4 mb-8">
+    <button class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700" onclick="fetchDoctors('Neurologist')">Neurologist</button>
+    <button class="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700" onclick="fetchDoctors('Oncologist')">Oncologist</button>
+    <button class="px-6 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-700" onclick="fetchDoctors('Dermatologist')">Dermatologist</button>
+    <button class="px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700" onclick="fetchDoctors('Cardiologist')">Cardiologist</button>
+  </div>
+
+  <!-- Table to display filtered doctors -->
+  <div class="flex justify-center">
+    <table class="table-auto w-full max-w-4xl text-center">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">Name</th>
+          <th class="px-4 py-2">Consultation Fees (in Rs)</th>
+          <th class="px-4 py-2">Years of Experience</th>
+          <th class="px-4 py-2">Hospital (in Ahmedabad)</th>
+          <th class="px-4 py-2">Location</th>
+        </tr>
+      </thead>
+      <tbody id="table-body" class="bg-white">
+        <!-- Rows will be inserted here by JS -->
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+.my{
+    width: 130vh;
+    align-item: center;
+    justify-content: center;
+    margin-left: 13%;
+    margin-top: 10px;
+}
+
+body{
+    align-items: center !important; 
+}
+.navt{
+    display: flex;
+    /* color: green; */
+    gap: 5px;
+    align-item: right;
+    justify-content: right;
+    margin: 10px;
+    font-size: 25px;
+}
+
+a:hover{
+    color: black;
+    font-size: 20px;
+    /* opacity: 0.3; */
+    transition: none 0.3s ease;
+    /* background-color: #e1e2e3; */
+}
+
+.navt a{
+    text-decoration: none;
+    /* color: green; */
+    gap: 5px;
+    margin: 5px;
+    font-size:20px;
+}

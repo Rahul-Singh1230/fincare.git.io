@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Managment</title>
+    <link rel="stylesheet" href="style_h.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"], input[type="number"], select {
+            padding: 5px;
+            margin: 5px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        h1{
+            font-size: 24px;
+            color: #034e9d;
+        }
+        h3{
+            font-size: 15px;
+            color:#007bff
+        }
+        .name{
+            color: #1d6ec5;
+        }
+        #name, #age, #gender, #doctor{
+            border: #1d6ec5 2px solid;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container_1">
+        <div class="heading">
+            <p>Hospital Managment</p>
+            <pre>Database Managment</pre>
+        </div>
+        <div>
+            <h1 align="center">Patient Records</h1>
+
+<!-- Form Section for New Data Entry -->
+<div class="form-section">
+    <h3>Add New Patient</h3>
+    <form id="patientForm">
+        <label for="name" class="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="age" class="name">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="gender" class="name">Gender:</label>
+        <select id="gender" class="name" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="doctor" class="name">Consulting Doctor:</label>
+        <input type="text" id="doctor" required>
+
+        <button type="submit" class="btn">Add Patient</button>
+    </form>
+</div>
+
+<!-- Button to Remove Selected Patients -->
+<button class="btn" onclick="removeSelectedPatients()">Remove Selected</button>
+
+<!-- Table to Display Patient Data -->
+<table>
+    <thead>
+        <tr class="name">
+            <th>Select</th>
+            <th>Serial No.</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Consulting Doctor</th>
+        </tr>
+    </thead>
+    <tbody id="patientTableBody">
+        <!-- Rows will be dynamically added here -->
+    </tbody>
+</table>
+
+<script>
+    let serialNumber = 1; // Initialize serial number
+
+    // Load data from localStorage and display it on the table
+    window.onload = function() {
+        const patients = JSON.parse(localStorage.getItem("patients")) || [];
+        patients.forEach(patient => addPatientToTable(patient.name, patient.age, patient.gender, patient.doctor, false));
+    }
+
+    // Function to add patient data to the table and localStorage
+    function addPatientToTable(name, age, gender, doctor, saveToStorage = true) {
+        const tableBody = document.getElementById("patientTableBody");
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td><input type="checkbox" class="select-patient"></td>
+            <td>${serialNumber++}</td>
+            <td>${name}</td>
+            <td>${age}</td>
+            <td>${gender}</td>
+            <td>${doctor}</td>
+        `;
+
+        tableBody.appendChild(row);
+
+        // Save the patient to localStorage if needed
+        if (saveToStorage) {
+            const patients = JSON.parse(localStorage.getItem("patients")) || [];
+            patients.push({ name, age, gender, doctor });
+            localStorage.setItem("patients", JSON.stringify(patients));
+        }
+    }
+
+    // Form submit event handler
+    document.getElementById("patientForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const age = document.getElementById("age").value;
+        const gender = document.getElementById("gender").value;
+        const doctor = document.getElementById("doctor").value;
+
+        // Add data to the table and localStorage
+        addPatientToTable(name, age, gender, doctor);
+
+        // Clear the form
+        document.getElementById("patientForm").reset();
+    });
+
+    // Function to remove selected patients
+    function removeSelectedPatients() {
+        const checkboxes = document.querySelectorAll(".select-patient:checked");
+        const patients = JSON.parse(localStorage.getItem("patients")) || [];
+
+        checkboxes.forEach((checkbox) => {
+            const row = checkbox.parentElement.parentElement;
+            const name = row.cells[2].textContent;
+
+            // Remove the patient from localStorage
+            const index = patients.findIndex(patient => patient.name === name);
+            if (index !== -1) patients.splice(index, 1);
+
+            // Remove the row from the table
+            row.remove();
+        });
+
+        // Update the localStorage with the new list of patients
+        localStorage.setItem("patients", JSON.stringify(patients));
+    }
+</script>
+
+</body>
+</html>
